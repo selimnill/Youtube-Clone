@@ -5,7 +5,7 @@ import Feed from "./Components/Feed"
 import LeftNav from "./Components/LeftNav"
 import LeftNavMenuItem from "./Components/LeftNavMenuItem"
 import SearchResult from "./Components/SearchResult"
-import SearchResultVideo from "./Components/SearchResultVideo"
+// import SearchResultVideo from "./Components/SearchResultVideo"
 import VideoCard from "./Components/VideoCard"
 import VideoDetails from "./Components/VideoDetails"
 import { BrowserRouter, Routes, Route } from "react-router-dom";

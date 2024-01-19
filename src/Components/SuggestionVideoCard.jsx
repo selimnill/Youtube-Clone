@@ -10,23 +10,23 @@ function SuggestionVideoCard({ video }) {
   return (
     <Link to={`/video/${video?.videoId}`}>
       <div className="flex mb-3">
-        <div className="relative h-24 lg:h-20 xl:h-24 w-40 min-w-[168px] lg:w-32 lg:min-w-[128px] xl:w-40 xl:min-w-168px rounded bg-state-800] overflow-hidden">
+        <div className="relative h-24 lg:h-20 xl:h-24 w-40 min-w-[168px] lg:w-32 lg:min-w-[128px] xl:w-40 xl:min-w-[168px] rounded bg-state-800 overflow-hidden">
           <img className='h-full w-full object-cover' src={video?.thumbnails?.[0]?.url} alt="" />
           {video?.lengthSeconds && (
             <VideoLength time={video?.lengthSeconds} />
           )}
         </div>
         <div className="flex flex-col ml-3 overflow-hidden">
-            <span className="text-sm font-bold line-clamp-2">
+            <span className="text-sm lg:text-xs xl:text-sm font-bold line-clamp-2 text-white">
               {video?.title}
             </span>
-            <span className='text-[12px].font-semibold mt-2 text-white/[0.7] flex items-center'>
+            <span className='text-[12px] lg:text-[10px] xl:-text-12px] font-semibld mt-2 text-white/[0.7] flex items-center'>
               {video?.author?.title}
               {video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
-                <BsFillCheckCircleFill className='text-white/[0.5] text-[12px] ml-1' />
+                <BsFillCheckCircleFill className='text-white/[0.5] text-[12px] lg:text-[10px] xl:text-[12px] ml-1' />
               )}
             </span>
-            <div className="flex text-[12px] fonts-semibold text-white/[0.7] truncate overflow-hidden">
+            <div className="flex text-[12px] lg:text-[10px] xl:text-[12px] font-semibold text-white/[0.7] truncate overflow-hidden">
               {video?.stats?.views ?
                 <span>{`${abbreviateNumber(video?.stats?.views, 2)} views`}</span>
                 :
