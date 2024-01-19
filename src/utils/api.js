@@ -1,13 +1,14 @@
 import axios from "axios";
 
-const BASE_URL = "https://youtube86.p.rapidapi.com";
+const BASE_URL = "https://youtube138.p.rapidapi.com";
 
 const options = {
+    method: "GET",
     params: { hl: 'en', gl: 'US' },
     headers: {
         // 'X-RapidAPI-Key': process.env.REACT_APP_YOUTUBE_API_KEY,
-        'X-RapidAPI-Key': '1d42c64612msh6247994b5b963f1p1909acjsn9f516c6e4f79',
-        'X-RapidAPI-Host': 'youtube86.p.rapidapi.com',
+        'X-RapidAPI-Key': '06076de2a6msha585a28679fed5fp1e6609jsnbb64ab2dcea2',
+        'X-RapidAPI-Host': 'youtube138.p.rapidapi.com',
     },
 };
 
