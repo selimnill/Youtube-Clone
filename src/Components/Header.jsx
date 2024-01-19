@@ -12,10 +12,6 @@ import { CgClose } from "react-icons/cg"
 import { Context } from '../Context/ContextApi';
 import Loader from '../shared/loader';
 
-// import Loader from "../shared/loader";
-
-
-
 
 export const Header = () => {
 
@@ -44,7 +40,7 @@ export const Header = () => {
 
       <div className='flex h-5 items-center'>
         {pageName !== "video" && (
-          <div className="flex md:hidden md:mr-6 cursor-pointer justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]"
+          <div className="flex items-center md:hidden md:mr-6 cursor-pointer justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]"
             onClick={mobileMenuToggle}>
 
             {mobileMenu ?
@@ -85,14 +81,14 @@ export const Header = () => {
       <div className="flex items-center ">
         <div className="hidden md:flex">
           <div className="flex items-center justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]">
-              <RiVideoAddLine className='text-white text-xl cursor-pointer' />
+            <RiVideoAddLine className='text-white text-xl cursor-pointer' />
           </div>
           <div className="flex items-center justify-center ml-2 h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]">
-              <FiBell className='text-white text-xl cursor-pointer' />
+            <FiBell className='text-white text-xl cursor-pointer' />
           </div>
-          <div className="flex h-8 w-8 overflow-hidden rounded-full md:ml-4">
-            <img src="https://xsgames.co/randomusers/assets/avatars/male/59.jpg" alt="" />
-          </div>
+        </div>
+        <div className="flex h-8 w-8 overflow-hidden rounded-full md:ml-4">
+          <img src="https://xsgames.co/randomusers/assets/avatars/male/59.jpg" alt="" />
         </div>
       </div>
     </div>

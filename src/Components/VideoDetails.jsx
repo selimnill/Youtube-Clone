@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactPlayer from "react-player/youtube";
 import { BsFillCheckCircleFill } from 'react-icons/bs';
-import { AiOutlineLike } from 'react-icons/ai';
+import { AiOutlineDislike, AiOutlineLike, AiOutlineShareAlt } from 'react-icons/ai';
 import { abbreviateNumber } from 'js-abbreviation-number';
 import { fetchDataFromApi } from "../utils/api";
 import SuggestionVideoCard from "./SuggestionVideoCard";
 import { Context } from '../Context/ContextApi';
+import styled from "styled-components";
+
 
 
 const VideoDetails = () => {
@@ -25,20 +27,40 @@ const VideoDetails = () => {
   const fetchVideoDetails = () => {
     setLoading(true);
     fetchDataFromApi(`video/details/?id=${id}`).then(res => {
-      console.log("res", res);
       setVideo(res);
+      console.log(res)
       setLoading(false);
+
     })
   };
 
   const fetchRelatedVideos = () => {
     setLoading(true);
     fetchDataFromApi(`video/related-contents/?id=${id}`).then(res => {
-      console.log("res res", res);
       setRelatedVideos(res);
       setLoading(false);
     })
   }
+
+
+
+  const like = () => {
+    const buttonLike = document.getElementById("likes");
+    buttonLike.addEventListener('click', function onClick(event) {
+      event.target.style.backgroundColor = "salmon";
+    })
+  }
+
+  const StyledDiv = styled.div`
+  width: 300px;
+  div {
+    font-size: 30px;
+    color: #828282;
+    color: ${({ color }) => (color ? "green" : "lightGrey")};
+  }
+`;
+
+  const [color, setColor] = useState(false);
 
   return (
     <div className='flex justify-center flex-row h-[calc(100%-56px)] bg-black'>
@@ -51,6 +73,7 @@ const VideoDetails = () => {
               width="100%"
               height="100%"
               style={{ backgroundColor: "#000000" }}
+              playing={true}
             />
           </div>
           <div className='text-white font-bold text-sm md:text-xl mt-4 line-clamp-2'>
@@ -76,11 +99,23 @@ const VideoDetails = () => {
               </div>
             </div>
             <div className="flex text-white mt-4 md:mt-0">
-              <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.16] cursor-pointer">
-                <AiOutlineLike className='text-xl text-white mr-2' />
-                <span>{`${abbreviateNumber(
+              <div onClick={like} className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.16] cursor-pointer" id='likes'>
+                <AiOutlineLike color={color} onClick={() => setColor(!color)} className='text-xl text-white mr-2' />
+                <span>25K</span>
+                {/* <span>{`${abbreviateNumber(
                   video?.stats?.likes, 2
-                )} Likes`}</span>
+                )} Likes`}</span> */}
+              </div>
+              <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.16] cursor-pointer" id='likes'>
+                <AiOutlineDislike className='text-xl text-white mr-2' />
+                <span>8K</span>
+                {/* <span>{`${abbreviateNumber(
+                  video?.stats?.likes, 2
+                )} Likes`}</span> */}
+              </div>
+              <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.16] cursor-pointer" id='likes'>
+                <AiOutlineShareAlt className='text-xl text-white mr-2' />
+                <span>Share</span>
               </div>
               <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.15] ml-4 cursor-pointer">
                 <span>{`${abbreviateNumber(
@@ -94,7 +129,7 @@ const VideoDetails = () => {
         <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]">
           {
             relatedVideos?.contents?.map((item, index) => {
-              if(item?.type !== "video") return false;
+              if (item?.type !== "video") return false;
               return (
                 <SuggestionVideoCard key={index} video={item?.video} />
               )

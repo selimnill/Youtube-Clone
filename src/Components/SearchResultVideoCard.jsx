@@ -32,7 +32,7 @@ function SearchResultVideoCard({ video }) {
                                     src={video?.author?.avatar[0]?.url} alt="" />
                             </div>
                         </div>
-                        <div className="flex fex-col">
+                        <div className="flex flex-col">
                             <span className="text-sm font-semibold mt-2 text-white/[0.7] flex items-center">
                                 {video?.author?.title}
                                 {video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
