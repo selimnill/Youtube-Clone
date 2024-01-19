@@ -44,7 +44,7 @@ const VideoCard = ({ video }) => {
         </div>
       </div>
     </Link>
-  )
+  );
 }
 
 export default VideoCard

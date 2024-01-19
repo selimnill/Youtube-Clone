@@ -25,7 +25,7 @@ const VideoDetails = () => {
   const fetchVideoDetails = () => {
     setLoading(true);
     fetchDataFromApi(`video/details/?id=${id}`).then(res => {
-      console.log(res);
+      console.log("res", res);
       setVideo(res);
       setLoading(false);
     })
@@ -34,8 +34,8 @@ const VideoDetails = () => {
   const fetchRelatedVideos = () => {
     setLoading(true);
     fetchDataFromApi(`video/related-contents/?id=${id}`).then(res => {
-      console.log(res);
-      setVideo(res);
+      console.log("res res", res);
+      setRelatedVideos(res);
       setLoading(false);
     })
   }
@@ -76,13 +76,13 @@ const VideoDetails = () => {
               </div>
             </div>
             <div className="flex text-white mt-4 md:mt-0">
-              <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.16]">
+              <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.16] cursor-pointer">
                 <AiOutlineLike className='text-xl text-white mr-2' />
                 <span>{`${abbreviateNumber(
                   video?.stats?.likes, 2
                 )} Likes`}</span>
               </div>
-              <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.15] ml-4">
+              <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.15] ml-4 cursor-pointer">
                 <span>{`${abbreviateNumber(
                   video?.stats?.views, 2
                 )} Views`}</span>
@@ -90,6 +90,18 @@ const VideoDetails = () => {
             </div>
           </div>
         </div>
+
+        <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]">
+          {
+            relatedVideos?.contents?.map((item, index) => {
+              if(item?.type !== "video") return false;
+              return (
+                <SuggestionVideoCard key={index} video={item?.video} />
+              )
+            })
+          }
+        </div>
+
       </div>
     </div>
   )
