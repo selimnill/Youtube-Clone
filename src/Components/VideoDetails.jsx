@@ -51,16 +51,16 @@ const VideoDetails = () => {
     })
   }
 
-  const StyledDiv = styled.div`
-  width: 300px;
-  div {
-    font-size: 30px;
-    color: #828282;
-    color: ${({ color }) => (color ? "green" : "lightGrey")};
-  }
-`;
+//   const StyledDiv = styled.div`
+//   width: 300px;
+//   div {
+//     font-size: 30px;
+//     color: #828282;
+//     color: ${({ color }) => (color ? "green" : "lightGrey")};
+//   }
+// `;
 
-  const [color, setColor] = useState(false);
+//   const [color, setColor] = useState(false);
 
   return (
     <div className='flex justify-center flex-row h-[calc(100%-56px)] bg-black'>
@@ -100,7 +100,7 @@ const VideoDetails = () => {
             </div>
             <div className="flex text-white mt-4 md:mt-0">
               <div onClick={like} className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.16] cursor-pointer" id='likes'>
-                <AiOutlineLike color={color} onClick={() => setColor(!color)} className='text-xl text-white mr-2' />
+                <span id='likebtn'><AiOutlineLike  className='text-xl text-white mr-2' /></span>
                 <span>25K</span>
                 {/* <span>{`${abbreviateNumber(
                   video?.stats?.likes, 2
@@ -108,7 +108,7 @@ const VideoDetails = () => {
               </div>
               <div className="flex items-center justify-center h-11 px-6 rounded-3xl bg-white/[0.16] cursor-pointer" id='likes'>
                 <AiOutlineDislike className='text-xl text-white mr-2' />
-                <span>8K</span>
+                {/* <span>8K</span> */}
                 {/* <span>{`${abbreviateNumber(
                   video?.stats?.likes, 2
                 )} Likes`}</span> */}
